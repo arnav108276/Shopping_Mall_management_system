@@ -5,25 +5,20 @@ from tkinter import ttk
 from tkinter import font
 from tkinter import messagebox
 import mysql.connector
-
 #Connecting to the database and creating table
 db=mysql.connector.connect(user="root",passwd="root",host="localhost") 
- 
 my_cursor=db.cursor() #getting the cursor object
 my_cursor.execute("CREATE DATABASE IF NOT EXISTS Shop") #creating the database named library
-
 db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
 my_cursor=db.cursor()
 #query to create a table products
 query="CREATE TABLE IF NOT EXISTS products (date VARCHAR(10),prodName VARCHAR(20), prodPrice VARCHAR(50))" 
 my_cursor.execute(query) #executing the query
-
 db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
 my_cursor=db.cursor()
 #query to create a table sale
 query="CREATE TABLE IF NOT EXISTS sale (custName VARCHAR(20), date VARCHAR(10), prodName VARCHAR(30),qty INTEGER, price INTEGER )" 
 my_cursor.execute(query) #executing the query
-
 #Function to add the product to the database
 def prodtoTable():
     #Getting the user inputs of product details from the user 
@@ -33,7 +28,6 @@ def prodtoTable():
     #Connecting to the database
     db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
     cursor = db.cursor()
-    
     #query to add the product details to the table
     query = "INSERT INTO products(date,prodName,prodPrice) VALUES(%s,%s,%s)" 
     details = (dt,pname,price)
