@@ -5,10 +5,8 @@ from tkinter import ttk
 from tkinter import font
 from tkinter import messagebox
 import mysql.connector
-
 #Connecting to the database and creating table
-db=mysql.connector.connect(user="root",passwd="root",host="localhost") 
- 
+db=mysql.connector.connect(user="root",passwd="root",host="localhost")  
 my_cursor=db.cursor() #getting the cursor object
 my_cursor.execute("CREATE DATABASE IF NOT EXISTS Shop") #creating the database named library
 
