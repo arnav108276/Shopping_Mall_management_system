@@ -91,6 +91,7 @@ def addProd():
     prodPrice.place(relx=0.3,rely=0.6, relwidth=0.62, relheight=0.08)
            
     #Add Button
+
     Btn = Button(wn,text="ADD",bg='#d1ccc0', fg='black',command=prodtoTable)
     Btn.place(relx=0.28,rely=0.85, relwidth=0.18,relheight=0.08)
     
@@ -370,6 +371,7 @@ btn3 = Button(wn,text="View Products",bg='old lace', fg='black',width=20,height=
 btn3['font'] = font.Font( size=12)
 btn3.place(x=270,y=335)
 #Button to add a new sale and generate bill
+#Code
 btn4 = Button(wn,text="New Customer",bg='lavender blush2', fg='black', width=20,height=2,command = newCust)
 btn4['font'] = font.Font( size=12)
 btn4.place(x=270,y=415)
