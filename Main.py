@@ -347,34 +347,6 @@ def newCust():
     Quit = Button(wn,text="Quit",bg='#f7f1e3', fg='black', command=wn.destroy)
     Quit.place(relx=0.55,rely=0.9, relwidth=0.18,relheight=0.08)
     wn.mainloop()
-#Creating the mail window
-wn = tkinter.Tk() 
-wn.title("PythonGeeks Shop Management System")
-wn.configure(bg='honeydew2')
-wn.minsize(width=500,height=500)
-wn.geometry("700x600")
-headingFrame1 = Frame(wn,bg="snow3",bd=5)
-headingFrame1.place(relx=0.2,rely=0.1,relwidth=0.6,relheight=0.16)
-headingLabel = Label(headingFrame1, text="Welcome to PythonGeeks \n Shop Management System", fg='grey19', font=('Courier',15,'bold'))
-headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
-#Button to add a new product
-btn1 = Button(wn,text="Add a Product",bg='LightBlue1', fg='black', width=20,height=2, command=addProd)
-btn1['font'] = font.Font( size=12)
-btn1.place(x=270,y=175)
-#Button to delete a product
-btn2 = Button(wn,text="Delete a Product",bg='misty rose', fg='black',width=20,height=2,command=delProd)
-btn2['font'] = font.Font( size=12)
-btn2.place(x=270,y=255)
-#Button to view all products
-btn3 = Button(wn,text="View Products",bg='old lace', fg='black',width=20,height=2,command=viewProds)
-btn3['font'] = font.Font( size=12)
-btn3.place(x=270,y=335)
-#Button to add a new sale and generate bill
-btn4 = Button(wn,text="New Customer",bg='lavender blush2', fg='black', width=20,height=2,command = newCust)
-btn4['font'] = font.Font( size=12)
-btn4.place(x=270,y=415)
-wn.mainloop() 
-
 
 
 
