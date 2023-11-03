@@ -37,6 +37,8 @@ def prodtoTable():
     details = (dt,pname,price)
 
     #Executing the query and showing the pop up message
+    #Executing the query and showing the pop up message
+   
     try:
         cursor.execute(query,details)
         db.commit()
@@ -199,6 +201,8 @@ def viewProds():
     fg='black').place(relx=0.07,rely=0.1)
     Label(labelFrame, text = "----------------------------------------------------------------------------",fg='black').place (relx=0.05,rely=0.2)
     #Executing the query and showing the products details
+
+    
     try:
         cursor.execute(query)
         res = cursor.fetchall() 
@@ -367,6 +371,7 @@ btn2 = Button(wn,text="Delete a Product",bg='misty rose', fg='black',width=20,he
 btn2['font'] = font.Font( size=12)
 btn2.place(x=270,y=255)
 #Button to view all products
+
 btn3 = Button(wn,text="View Products",bg='old lace', fg='black',width=20,height=2,command=viewProds)
 btn3['font'] = font.Font( size=12)
 btn3.place(x=270,y=335)
