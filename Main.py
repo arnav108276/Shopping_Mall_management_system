@@ -375,8 +375,8 @@ btn2.place(x=270,y=255)
 btn3 = Button(wn,text="View Products",bg='old lace', fg='black',width=20,height=2,command=viewProds)
 btn3['font'] = font.Font( size=12)
 btn3.place(x=270,y=335)
-#Button to add a new sale and generate bill
-#Code
+#button to add a new sale and generating bill
+#code
 btn4 = Button(wn,text="New Customer",bg='lavender blush2', fg='black', width=20,height=2,command = newCust)
 btn4['font'] = font.Font( size=12)
 btn4.place(x=270,y=415)
