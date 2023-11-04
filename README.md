@@ -1,2 +1,3 @@
-# Mall_management_system
-**Team-3**
+mall managemant system 
+project 3
+team 3
