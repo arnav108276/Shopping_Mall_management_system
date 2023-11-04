@@ -92,4 +92,25 @@ class ShoppingApp:
         self.invoice_text = tk.Text(self.root, height=10, width=40)
         self.invoice_text.pack()
 
+def add_to_cart(self):
+        selected_item_name = self.item_var.get()
+        quantity = int(self.quantity_entry.get())
+        selected_item = next(item for item in self.items if item.name == selected_item_name)
+        self.cart.add_item(selected_item, quantity)
+        self.update_invoice()
+
+    def update_invoice(self):
+        self.invoice_text.delete(1.0, tk.END)
+        self.invoice_text.insert(tk.END, "Invoice:\n")
+        for item in self.cart.items:
+            self.invoice_text.insert(tk.END, f"{item['item'].name} - Quantity: {item['quantity']} - Price: ${item['item'].price * item['quantity']:.2f}\n")
+        self.invoice_text.insert(tk.END, f"Total: ${self.cart.calculate_total():.2f}\n")
+        self.invoice_text.insert(tk.END, f"Date of Purchase: {self.purchase_date}")
+
+    def calculate_sales(self):
+        self.sales += self.cart.calculate_total()
+        self.purchase_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.cart = ShoppingCart()
+        self.update_invoice()
+        print(f"Total Sales: ${self.sales:.2f}")
 
