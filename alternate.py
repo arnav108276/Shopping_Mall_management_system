@@ -33,6 +33,7 @@ class ShoppingApp:
             Item(2, "Item B", 5.0, 30)
         ]
 
+
 import tkinter as tk
 from datetime import datetime
 class Item:
