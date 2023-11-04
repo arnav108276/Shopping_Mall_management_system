@@ -114,3 +114,7 @@ def add_to_cart(self):
         self.update_invoice()
         print(f"Total Sales: ${self.sales:.2f}")
 
+if _name_ == "_main_":
+    root = tk.Tk()
+    app = ShoppingApp(root)
+    root.mainloop()
