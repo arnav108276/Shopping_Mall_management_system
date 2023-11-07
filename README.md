@@ -1,5 +1,2 @@
-#mall managemant system 
-
-project 3
-
-team 3 
+# Shopping Mall Managemant System 
+# **team 3**
