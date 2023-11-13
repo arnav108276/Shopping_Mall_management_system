@@ -9,13 +9,11 @@ import mysql.connector
 db=mysql.connector.connect(user="root",passwd="root",host="localhost")  
 my_cursor=db.cursor() #getting the cursor object
 my_cursor.execute("CREATE DATABASE IF NOT EXISTS Shop") #creating the database named library
-
 db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
 my_cursor=db.cursor()
 #query to create a table products
 query="CREATE TABLE IF NOT EXISTS products (date VARCHAR(10),prodName VARCHAR(20), prodPrice VARCHAR(50))" 
 my_cursor.execute(query) #executing the query
-
 db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
 my_cursor=db.cursor()
 #query to create a table sale
