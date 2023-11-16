@@ -18,9 +18,7 @@ db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='
 my_cursor=db.cursor()
 #query to create a table sale
 query="CREATE TABLE IF NOT EXISTS sale (custName VARCHAR(20), date VARCHAR(10), prodName VARCHAR(30),qty INTEGER, price INTEGER )" 
-my_cursor.execute(query) #executing the query
-
-#Function to add the product to the database
+my_cursor.execute(query)
 def prodtoTable():
     #Getting the user inputs of product details from the user 
     pname= prodName.get()
@@ -29,14 +27,8 @@ def prodtoTable():
     #Connecting to the database
     db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
     cursor = db.cursor()
-    
-    #query to add the product details to the table
     query = "INSERT INTO products(date,prodName,prodPrice) VALUES(%s,%s,%s)" 
     details = (dt,pname,price)
-
-    #Executing the query and showing the pop up message
-    #Executing the query and showing the pop up message
-   
     try:
         cursor.execute(query,details)
         db.commit()
@@ -44,7 +36,6 @@ def prodtoTable():
     except Exception as e:
         print("The exception is:",e)
         messagebox.showinfo("Error","Trouble adding data into Database")
-    
     wn.destroy()
 #Function to get details of the product to be added
 def addProd(): 
@@ -155,17 +146,11 @@ def delProd():
         
     prodName = Entry(labelFrame)
     prodName.place(relx=0.3,rely=0.5, relwidth=0.62)
-    
-    #Delete Button
     Btn = Button(wn,text="DELETE",bg='#d1ccc0', fg='black',command=removeProd)
     Btn.place(relx=0.28,rely=0.9, relwidth=0.18,relheight=0.08)
-    
     Quit = Button(wn,text="Quit",bg='#f7f1e3', fg='black', command=wn.destroy)
     Quit.place(relx=0.53,rely=0.9, relwidth=0.18,relheight=0.08)
-    
     wn.mainloop()
-
-#Function to show all the products in the database
 def viewProds():
     global  wn
     #Creating the window to show the products details
@@ -174,33 +159,22 @@ def viewProds():
     wn.configure(bg='mint cream')
     wn.minsize(width=500,height=500)
     wn.geometry("700x600")
-
     Canvas1 = Canvas(wn) 
     Canvas1.config(bg="old lace")
     Canvas1.pack(expand=True,fill=BOTH)
-
     headingFrame1 = Frame(wn,bg='old lace',bd=5)
     headingFrame1.place(relx=0.25,rely=0.1,relwidth=0.5,relheight=0.13)
-
     headingLabel = Label(headingFrame1, text="View Products", fg='black', font = ('Courier',15,'bold'))
     headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
-    
     labelFrame = Frame(wn)
     labelFrame.place(relx=0.1,rely=0.3,relwidth=0.8,relheight=0.5)
     y = 0.25
-
-    #Connecting to database
     db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
     cursor=db.cursor()
-    #query to select all products from the table
     query = 'SELECT * FROM products'
-    
     Label(labelFrame, text="%-50s%-50s%-50s"%('Date','Product','Price'),font = ('calibri',11,'bold'),
     fg='black').place(relx=0.07,rely=0.1)
     Label(labelFrame, text = "----------------------------------------------------------------------------",fg='black').place (relx=0.05,rely=0.2)
-    #Executing the query and showing the products details
-
-    
     try:
         cursor.execute(query)
         res = cursor.fetchall() 
@@ -211,44 +185,30 @@ def viewProds():
     except Exception as e:
         print("The exception is:",e)
         messagebox.showinfo("Failed to fetch files from database")
-    
     Quit= Button(wn,text="Quit",bg='#f7f1e3', fg='black', command=wn.destroy)
     Quit.place(relx=0.4,rely=0.9, relwidth=0.18,relheight=0.08)
-    
     wn.mainloop()
-
-#Function to generate the bill
 def bill():
-    #Creating a window
     wn = tkinter.Tk() 
     wn.title("PythonGeeks Shop Management System")
     wn.configure(bg='lavender blush2')
     wn.minsize(width=500,height=500)
     wn.geometry("700x600")
-
     headingFrame1 = Frame(wn,bg="lavender blush2",bd=5)
     headingFrame1.place(relx=0.2,rely=0.1,relwidth=0.6,relheight=0.16)
     headingLabel = Label(headingFrame1, text="Bill", fg='grey19', font=('Courier',15,'bold'))
     headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
-    
     labelFrame = Frame(wn)
     labelFrame.place(relx=0.1,rely=0.3,relwidth=0.8,relheight=0.5)
-    
     y = 0.35
     Label(labelFrame, text="%-40s%-40s%-40s%-40s"%('Product','Price','Quantity','Total'),font = ('calibri',11,'bold'),
     fg='black').place(relx=0.07,rely=0.2)
-    
-    #Getting date and customer name
     dt=date.get()
     cName=custName.get()
     totalBill=0
-    #Connecting to database
     db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
     cursor=db.cursor()
-    #query to select all the products 
     query = 'SELECT * FROM products'
-    
-    #Checking if the quantity of the 1st product is entered and calculating price, showing it on window  and adding to database 
     if(len(name1.get()) != 0):
         i=res[0]
         qty=int(name1.get())
@@ -256,11 +216,8 @@ def bill():
         Label(labelFrame,text="%-40s%-40s%-40s%-40s"%(i[1],i[2],qty,total) ,fg='black').place(relx=0.07,rely=y)
         totalBill+=total
         y+=0.1
-        
         query = "INSERT INTO sale(custName,date,prodName,qty,price) VALUES(%s,%s,%s,%s,%s)" 
         details = (cName,dt,i[1],qty,total)
-        
-    #Checking if the quantity of the 2nd product is entered and calculating price, showing it on window  and adding to database 
     if(len(name2.get()) != 0):
         i=res[1]
         qty=int(name2.get())
@@ -270,8 +227,6 @@ def bill():
         y+=0.1
         query = "INSERT INTO sale(custName,date,prodName,qty,price) VALUES(%s,%s,%s,%s,%s)" 
         details = (cName,dt,i[1],qty,total)
-    
-    #Checking if the quantity of the 3rd product is entered and calculating price, showing it on window  and adding to database 
     if(len(name3.get()) != 0):
         i=res[2]
         qty=int(name3.get())
@@ -281,19 +236,14 @@ def bill():
         y+=0.1
         query = "INSERT INTO sale(custName,date,prodName,qty,price) VALUES(%s,%s,%s,%s,%s)" 
         details = (cName,dt,i[1],qty,total)
-    #showing total of the bill
     Label(labelFrame, text = "------------------------------------------------------------------------------------",fg='black').place (relx=0.05,rely=y)
     y+=0.1
     Label(labelFrame,text="\t\t\t\t\t\t\t\t"+str(totalBill) ,fg='black').place(relx=0.07,rely=y)
-    
     Quit = Button(wn,text="Quit",bg='#f7f1e3', fg='black', command=wn.destroy)
     Quit.place(relx=0.53,rely=0.9, relwidth=0.18,relheight=0.08)
-    
-    wn.mainloop()
-#Function to take the inputs form the user to generate bill    
+    wn.mainloop()   
 def newCust():    
     global wn,name1,name2,name3,date,custName
-    #Creating a window
     wn = tkinter.Tk() 
     wn.title("PythonGeeks Shop Management System")
     wn.configure(bg='lavender blush2')
@@ -305,7 +255,6 @@ def newCust():
     headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
     lable1 = Label(wn,text="Date : ", fg='black')
     lable1.place(relx=0.05,rely=0.3, )
-    #Getting date
     date = Entry(wn)
     date.place(relx=0.3,rely=0.3, relwidth=0.62)
     lable2 = Label(wn,text="Customer Name : ", fg='black')
@@ -344,13 +293,11 @@ def newCust():
     name3 = Entry(labelFrame)
     name3.place(relx=0.6,rely=y, relwidth=0.2)
     y += 0.1
-     #Button to generate bill
     Btn= Button(wn,text="Generate Bill",bg='#d1ccc0', fg='black',command=bill)
     Btn.place(relx=0.28,rely=0.9, relwidth=0.18,relheight=0.08)
     Quit = Button(wn,text="Quit",bg='#f7f1e3', fg='black', command=wn.destroy)
     Quit.place(relx=0.55,rely=0.9, relwidth=0.18,relheight=0.08)
     wn.mainloop()
-#Creating the mail window
 wn = tkinter.Tk() 
 wn.title("PythonGeeks Shop Management System")
 wn.configure(bg='honeydew2')
@@ -368,8 +315,6 @@ btn1.place(x=270,y=175)
 btn2 = Button(wn,text="Delete a Product",bg='misty rose', fg='black',width=20,height=2,command=delProd)
 btn2['font'] = font.Font( size=12)
 btn2.place(x=270,y=255)
-#Button to view all products
-
 btn3 = Button(wn,text="View Products",bg='old lace', fg='black',width=20,height=2,command=viewProds)
 btn3['font'] = font.Font( size=12)
 btn3.place(x=270,y=335)
