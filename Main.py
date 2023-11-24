@@ -47,11 +47,9 @@ def addProd():
     wn.configure(bg='mint cream')
     wn.minsize(width=500,height=500)
     wn.geometry("700x600")
-
     Canvas1 = Canvas(wn)
     Canvas1.config(bg='LightBlue1')
     Canvas1.pack(expand=True,fill=BOTH)
-    
     headingFrame1 = Frame(wn,bg='LightBlue1',bd=5)
     headingFrame1.place(relx=0.25,rely=0.1,relwidth=0.5,relheight=0.13)
     headingLabel = Label(headingFrame1, text="Add a Product", fg='grey19', font=('Courier',15,'bold'))
@@ -88,9 +86,7 @@ def addProd():
     
     Quit= Button(wn,text="Quit",bg='#f7f1e3', fg='black',command=wn.destroy)
     Quit.place(relx=0.53,rely=0.85, relwidth=0.18,relheight=0.08)
-    
     wn.mainloop()
-
 #Function to remove the product from the database
 def removeProd():
     #Getting the product name from the user to be removed
@@ -109,17 +105,14 @@ def removeProd():
         db.commit()
         #cur.execute(deleteIssue)
         #con.commit()
-
         messagebox.showinfo('Success',"Product Record Deleted Successfully")
 
     except Exception as e:
         print("The exception is:",e)
         messagebox.showinfo("Please check Product Name")
- 
     wn.destroy()
 #Function to get product details from the user to be deleted
 def delProd(): 
-
     global prodName, Canvas1,  wn
     #Creating a window
     wn = tkinter.Tk() 
@@ -127,23 +120,18 @@ def delProd():
     wn.configure(bg='mint cream')
     wn.minsize(width=500,height=500)
     wn.geometry("700x600")
-
     Canvas1 = Canvas(wn)
     Canvas1.config(bg="misty rose")
     Canvas1.pack(expand=True,fill=BOTH)
-    
     headingFrame1 = Frame(wn,bg="misty rose",bd=5)
     headingFrame1.place(relx=0.25,rely=0.1,relwidth=0.5,relheight=0.13)
     headingLabel = Label(headingFrame1, text="Delete Product", fg='grey19', font=('Courier',15,'bold'))
     headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
-    
     labelFrame = Frame(wn)
     labelFrame.place(relx=0.1,rely=0.3,relwidth=0.8,relheight=0.5)   
-        
     # Product Name to Delete
     lable = Label(labelFrame,text="Product Name : ", fg='black')
     lable.place(relx=0.05,rely=0.5)
-        
     prodName = Entry(labelFrame)
     prodName.place(relx=0.3,rely=0.5, relwidth=0.62)
     Btn = Button(wn,text="DELETE",bg='#d1ccc0', fg='black',command=removeProd)
@@ -178,7 +166,6 @@ def viewProds():
     try:
         cursor.execute(query)
         res = cursor.fetchall() 
-        
         for i in res:
             Label(labelFrame,text="%-50s%-50s%-50s"%(i[0],i[1],i[2]) ,fg='black').place(relx=0.07,rely=y)
             y += 0.1
@@ -324,6 +311,21 @@ btn4 = Button(wn,text="New Customer",bg='lavender blush2', fg='black', width=20,
 btn4['font'] = font.Font( size=12)
 btn4.place(x=270,y=415)
 wn.mainloop() 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
