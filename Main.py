@@ -191,8 +191,8 @@ def bill():
     totalBill=0
     db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
     cursor=db.cursor()
-    query = 'SELECT * FROM products'
-    if(len(name1.get()) != 0):
+    query = 'SELECT * FROM products'   
+    if(len(name1.get()) != 0):     
         i=res[0]
         qty=int(name1.get())
         total=qty*int(i[2])
