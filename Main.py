@@ -1,11 +1,9 @@
-#Importing the required modules
 import tkinter
 from tkinter import *
 from tkinter import ttk
 from tkinter import font
 from tkinter import messagebox
 import mysql.connector
-#Connecting to the database and creating table
 db=mysql.connector.connect(user="root",passwd="root",host="localhost")  
 my_cursor=db.cursor() #getting the cursor object
 my_cursor.execute("CREATE DATABASE IF NOT EXISTS Shop") #creating the database named library
@@ -20,11 +18,9 @@ my_cursor=db.cursor()
 query="CREATE TABLE IF NOT EXISTS sale (custName VARCHAR(20), date VARCHAR(10), prodName VARCHAR(30),qty INTEGER, price INTEGER )" 
 my_cursor.execute(query)
 def prodtoTable():
-    #Getting the user inputs of product details from the user 
     pname= prodName.get()
     price = prodPrice.get()
     dt = date.get()
-    #Connecting to the database
     db=mysql.connector.connect(user="root",passwd="root",host="localhost",database='Shop') 
     cursor = db.cursor()
     query = "INSERT INTO products(date,prodName,prodPrice) VALUES(%s,%s,%s)" 
