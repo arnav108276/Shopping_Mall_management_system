@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import font
 from tkinter import messagebox
 import mysql.connector
+
 #Connecting to the database and creating table
 db=mysql.connector.connect(user="Rangoli",password="yae@96#SHREYASH",host="localhost") 
 my_cursor=db.cursor() #getting the cursor object
