@@ -85,6 +85,7 @@ def addProd():
     wn.mainloop()
 #Function to remove the product from the database
 def removeProd():
+    
     #Getting the product name from the user to be removed
     name = prodName.get()
     name = name.lower()
@@ -137,6 +138,7 @@ def delProd():
     wn.mainloop()
 def viewProds():
     global  wn
+    
     #Creating the window to show the products details
     wn = tkinter.Tk() 
     wn.title("PythonGeeks Shop Management System")
