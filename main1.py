@@ -5,7 +5,9 @@ from tkinter import ttk
 from tkinter import font
 from tkinter import messagebox
 import mysql.connector
+
 #Connecting to the database and creating table
+
 db=mysql.connector.connect(user="Rangoli",password="yae@96#SHREYASH",host="localhost") 
 my_cursor=db.cursor() #getting the cursor object
 my_cursor.execute("CREATE DATABASE IF NOT EXISTS Shop") #creating the database named library
@@ -25,13 +27,19 @@ def prodtoTable():
     pname= prodName.get()
     price = prodPrice.get()
     dt = date.get()
+    
     #Connecting to the database
+    
     db=mysql.connector.connect(user="Rangoli",passwd="yae@96#SHREYASH",host="localhost",database='devops') 
     cursor = db.cursor()
+    
     #query to add the product details to the table
+    
     query = "INSERT INTO products(date,prodName,prodPrice) VALUES(%s,%s,%s)" 
     details = (dt,pname,price)
+    
     #Executing the query and showing the pop up message
+    
     try:
         cursor.execute(query,details)
         db.commit()
@@ -364,6 +372,87 @@ btn3.place(x=970,y=335)
 btn4 = Button(wn,text="New Bill",bg='#C3ACD0', fg='black', width=30,height=3,highlightthickness=10,command = newCust)
 btn4['font'] = font.Font( size=22)
 btn4.place(x=560,y=535)
-
-
 wn.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
