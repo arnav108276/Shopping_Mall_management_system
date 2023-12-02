@@ -49,7 +49,7 @@ def addProd():
     wn.configure(bg='#CD5C08')
     wn.minsize(width=500,height=500)
     wn.geometry("700x600")
-    Canvas1 = Canvas(wn)
+    Canvas1 =Canvas(wn)
     Canvas1.config(bg='#CD5C08')
     Canvas1.pack(expand=True,fill=BOTH)
     headingFrame1 = Frame(wn,bg='#C1D8C3',bd=5)
@@ -58,6 +58,7 @@ def addProd():
     headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
     labelFrame = Frame(wn)
     labelFrame.place(relx=0.1,rely=0.4,relwidth=0.8,relheight=0.4)
+    
     # Getting Date
     lable1 = Label(labelFrame,text="Date : ", fg='black')
     lable1.place(relx=0.05,rely=0.3, relheight=0.08)
