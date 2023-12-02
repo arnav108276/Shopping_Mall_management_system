@@ -346,10 +346,7 @@ headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
 btn1 = Button(wn,text="Add a Product",bg='#B6BBC4', fg='black', width=20,height=3, command=addProd)
 btn1['font'] = font.Font( size=16)
 btn1.place(x=370,y=335)
-#Button to delete a product
-btn2 = Button(wn,text="Delete a Product",bg='#B6BBC4', fg='black',width=20,height=3,command=delProd)
-btn2['font'] = font.Font( size=16)
-btn2.place(x=670,y=335)
+
 
 #Button to view all products
 btn3 = Button(wn,text="View Products",bg='#B6BBC4', fg='black',width=20,height=3,command=viewProds)
