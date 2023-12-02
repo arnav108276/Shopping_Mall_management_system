@@ -5,9 +5,7 @@ from tkinter import ttk
 from tkinter import font
 from tkinter import messagebox
 import mysql.connector
-
 #Connecting to the database and creating table
-
 db=mysql.connector.connect(user="Rangoli",password="yae@96#SHREYASH",host="localhost") 
 my_cursor=db.cursor() #getting the cursor object
 my_cursor.execute("CREATE DATABASE IF NOT EXISTS Shop") #creating the database named library
@@ -27,19 +25,13 @@ def prodtoTable():
     pname= prodName.get()
     price = prodPrice.get()
     dt = date.get()
-    
     #Connecting to the database
-    
     db=mysql.connector.connect(user="Rangoli",passwd="yae@96#SHREYASH",host="localhost",database='devops') 
     cursor = db.cursor()
-    
     #query to add the product details to the table
-    
     query = "INSERT INTO products(date,prodName,prodPrice) VALUES(%s,%s,%s)" 
     details = (dt,pname,price)
-    
     #Executing the query and showing the pop up message
-    
     try:
         cursor.execute(query,details)
         db.commit()
@@ -66,7 +58,6 @@ def addProd():
     headingLabel.place(relx=0,rely=0, relwidth=1, relheight=1)
     labelFrame = Frame(wn)
     labelFrame.place(relx=0.1,rely=0.4,relwidth=0.8,relheight=0.4)
-    
     # Getting Date
     lable1 = Label(labelFrame,text="Date : ", fg='black')
     lable1.place(relx=0.05,rely=0.3, relheight=0.08)
@@ -180,7 +171,6 @@ def viewProds():
     cursor=db.cursor()
     #query to select all products from the table
     query = 'SELECT * FROM products'
-    
     Label(labelFrame, text="%-50s%-50s%-50s"%('Date','Product','Price'),font = ('georgia',10,'italic'),
     fg='black').place(relx=0.07,rely=0.1)
     Label(labelFrame, text = "----------------------------------------------------------------------------",fg='black').place (relx=0.05,rely=0.2)
@@ -209,7 +199,6 @@ def bill():
     wn.configure(bg='#FFCC70')
     wn.minsize(width=500,height=500)
     wn.geometry("700x600")
-
     headingFrame1 = Frame(wn,bg="#FFCC70",bd=5)
     headingFrame1.place(relx=0.2,rely=0.1,relwidth=0.6,relheight=0.16)
     headingLabel = Label(headingFrame1, text="Bill", fg='grey19', font=('Georgia',25,))
@@ -294,7 +283,6 @@ def newCust():
     
     lable2 = Label(wn,text="Customer Name : ", fg='black')
     lable2.place(relx=0.05,rely=0.4, )
-      
     #Getting customer name
     custName = Entry(wn)
     custName.place(relx=0.3,rely=0.4, relwidth=0.62)
@@ -367,30 +355,11 @@ btn2.place(x=670,y=335)
 btn3 = Button(wn,text="View Products",bg='#B6BBC4', fg='black',width=20,height=3,command=viewProds)
 btn3['font'] = font.Font( size=16)
 btn3.place(x=970,y=335)
-
 #Button to add a new sale and generate bill
 btn4 = Button(wn,text="New Bill",bg='#C3ACD0', fg='black', width=30,height=3,highlightthickness=10,command = newCust)
 btn4['font'] = font.Font( size=22)
 btn4.place(x=560,y=535)
 wn.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
