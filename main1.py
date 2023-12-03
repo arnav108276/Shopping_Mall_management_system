@@ -97,12 +97,12 @@ def removeProd():
         #con.commit()
 
         messagebox.showinfo('Success',"Product Record Deleted Successfully")
-
-    except Exception as e:
+  except Exception as e:
         print("The exception is:",e)
         messagebox.showinfo("Please check Product Name")
  
     wn.destroy()
+
 #Function to get product details from the user to be deleted
 def delProd(): 
 
