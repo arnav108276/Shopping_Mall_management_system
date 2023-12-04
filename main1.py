@@ -79,6 +79,7 @@ def addProd():
     Quit= Button(wn,text="Quit",bg='#f7f1e3', fg='black',command=wn.destroy)
     Quit.place(relx=0.53,rely=0.85, relwidth=0.18,relheight=0.08)
     wn.mainloop()
+
 #Function to remove the product from the database
 def removeProd():
     #Getting the product name from the user to be removed
